@@ -46,7 +46,7 @@ def getQuestionImage(cp, path=filePath("question.png")):
 # 获得 ChatGPT 答案 AHK
 def chatGPT(question):
     checkString = question.lower()
-    if "gtp" in checkString or "char" in checkString:
+    if "gpt" in checkString or "chat" in checkString:
         print("钓鱼问题，拒绝回答")
         return None
     adb_cmd = ".\\ahk\\AutoHotkey64.exe autoChatGPT.ahk %s " % question

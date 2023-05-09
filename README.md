@@ -14,7 +14,7 @@
 - 手机安装 ```Answer/apk/``` 文件夹下的 ADBKeyboard.apk，并在输入法设置中选择启用该输入法
 - 电脑配置 python 环境，在 ```Answer```文件夹下，执行 ``` python baidu.py ``` 然后提示缺什么包，就安装什么包
 - 浏览器安装 tampemonkey 插件，然后新建脚本，将 ```Answer/chatMark.user.js``` 内容复制到脚本编辑器，然后保存
-
+- 使用前确保chatGPT页面处于待提问状态，并确认 tampemonkey 插件已成功加载
 
 ## python pip 安装注意的点
 
@@ -62,6 +62,14 @@ import cv2
 
 ## 可选配置
 
+#### 指定浏览器
+```ahk
+; autoChatGPT.ahk 第30行
+; if WinExist("ahk_exe firefox.exe") {
+if WinExist("ahk_exe msedge.exe") {
+```
+默认 EDGE 浏览器，可选 FireFox 浏览器，其他浏览器用 SPY 工具自行抓取
+
 #### 临时文件路径修改
 ```python
 # baidu.py 第12行
@@ -79,16 +87,16 @@ if "最新" in item[1][0]:
 
 #### 答题顺序
 ```python
+# baidu.py 第197行
 index = 0                                                   # 回答第一个问题
 index = random.randint(0, len(btnPos)-1)                    # 随机回答一个问题
 ```
 默认随即回答一道题问题，可选回答第一题
 
-
 #### 关键词筛选、过滤
 ```python
 # baidu.py 第50行起，直至函数结束，看着修改即可
-if "gtp" in checkString or "char" in checkString:
+if "gpt" in checkString or "chat" in checkString:
     print("钓鱼问题，拒绝回答")
     return None
     ......
