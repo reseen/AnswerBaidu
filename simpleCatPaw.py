@@ -1,7 +1,7 @@
 import numpy as np
 import cv2
-import subprocess
 import findimage
+import subprocess
 
 class SimpleCatPaw:
     
